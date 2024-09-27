@@ -7,6 +7,8 @@ public class Main {
         list.addLast(10);
         list.addLast(20);
         list.addLast(30);
+        list.reverse();
+
 
         System.out.println(list.indexOfNumber(30));
         System.out.println(list.contains(330));

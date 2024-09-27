@@ -101,5 +101,28 @@ public class LinkedList {
 
         return -1;
     }
-}
 
+
+    public void reverse (){
+//        [10->20->30]
+//        [10<-20<-30]
+        //[{10,null},{20,a},{30,c},{40,null}]
+//        ----one-----two----three---four
+       if(first.next==null){
+           return;
+       }
+        var previous=first;
+        var current=first.next;
+        while(current!=null){
+            var next=current.next;
+            current.next=previous;
+            previous=current;
+            current=next;
+        }
+
+        last=previous;
+        last.next=null;
+        first=previous;
+    }
+}
+//[{10,a},{20,b},{30,null}]

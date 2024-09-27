@@ -41,12 +41,12 @@ public class LinkedList {
     }
 
     public void deleteFirst() {
-        if(first==last){
-            first = last =null;
+        if (first == last) {
+            first = last = null;
             return;
         }
 //        [10->20->30]
-        if(first!=null) {
+        if (first != null) {
             var second = first.next;
             first.next = null;
             first = second;
@@ -82,10 +82,10 @@ public class LinkedList {
 
 
     public boolean contains(int number) {
-        var current=first;
-        while(current!=null){
-            if (current.value==number) return true;
-            current=current.next;
+        var current = first;
+        while (current != null) {
+            if (current.value == number) return true;
+            current = current.next;
         }
         return false;
     }
@@ -95,7 +95,7 @@ public class LinkedList {
         var current = first;
         while (current != null) {
             if (current.value == number) return index;
-            current=current.next;
+            current = current.next;
             index++;
         }
 
@@ -103,26 +103,53 @@ public class LinkedList {
     }
 
 
-    public void reverse (){
+    public void reverse() {
 //        [10->20->30]
 //        [10<-20<-30]
         //[{10,null},{20,a},{30,c},{40,null}]
 //        ----one-----two----three---four
-       if(first.next==null){
-           return;
-       }
-        var previous=first;
-        var current=first.next;
-        while(current!=null){
-            var next=current.next;
-            current.next=previous;
-            previous=current;
-            current=next;
+
+        if (first.next == null) {
+            return;
+        }
+        var previous = first;
+        var current = first.next;
+        while (current != null) {
+            var next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
         }
 
-        last=previous;
-        last.next=null;
-        first=previous;
+        last = first;
+        last.next = null;
+        first = previous;
+    }
+
+    public void kthNodeFromEnd(int k) {
+        var fast = first;
+        var slow = first;
+
+        if (first == null) {
+            return;
+        }
+
+        for (int i = 0; i < k; i++) {
+            if (fast == null) {
+                System.out.println("The func can't be done");
+                return;
+            }
+            fast = fast.next;
+        }
+
+        while (fast.next == null) {
+            fast = fast.next;
+            slow = fast.next;
+        }
+
+        System.out.println("The kth node from end is " + slow);
     }
 }
 //[{10,a},{20,b},{30,null}]
+
+
